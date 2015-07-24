@@ -22,8 +22,6 @@ var EasyAutocomplete = (function(scope){//options defaults
 				return data;
 			},
 
-			//xmlElementName: "",
-
 			getValue: function(element) {
 				return element;
 			},
@@ -31,8 +29,6 @@ var EasyAutocomplete = (function(scope){//options defaults
 			autocompleteOff: true,
 
 			placeholder: false,
-
-			//ajaxCallback: function() {},
 
 			matchResponseProperty: false,
 
@@ -96,11 +92,7 @@ var EasyAutocomplete = (function(scope){//options defaults
 
 		};
 
-		//prepareDefaults();
-
 		mergeOptions();
-
-		//addAjaxSettings();
 
 		processAfterMerge();
 		
@@ -217,13 +209,6 @@ var EasyAutocomplete = (function(scope){//options defaults
 				};
 			}
 
-/*			if (defaults.ajaxSettings.url !== undefined && typeof defaults.ajaxSettings.url !== "function") {
-				var defaultUrl = defaults.ajaxSettings.url;
-				defaults.ajaxSettings.url = function() {
-					return defaultUrl;
-				};
-			}
-*/
 			if (typeof defaults.listLocation === "string") {
 				var defaultlistLocation = defaults.listLocation;
 				defaults.listLocation = function(data) {
@@ -240,16 +225,6 @@ var EasyAutocomplete = (function(scope){//options defaults
 
 		}
 
-/*		function addAjaxSettings() {
-
-			if (options.ajaxSettings !== undefined && typeof options.ajaxSettings === "object") {
-				defaults.ajaxSettings = options.ajaxSettings;
-			} else {
-				defaults.ajaxSettings = {};	
-			}
-			
-		}
-*/
 		function isAssigned(name) {
 			if (defaults[name] !== undefined && defaults[name] !== null) {
 				return true;
@@ -665,78 +640,7 @@ var EasyAutocomplete = (function(scope) {//CORE
 							showContainer();
 
 						}
-/*
-						var settings = createAjaxSettings();
 
-						if (settings.url === undefined || settings.url === "") {
-							settings.url = config.get("url");
-						}
-
-						if (settings.dataType === undefined || settings.dataType === "") {
-							settings.dataType = config.get("dataType");
-						}
-
-
-						if (settings.url !== undefined && settings.url !== "list-required") {
-
-							settings.url = settings.url(inputPhrase);
-
-							$.ajax(settings) 
-								.done(function(data) {
-
-									elementsList = config.get("listLocation")(data);
-
-									
-									if(config.get("dataType").toUpperCase() === "XML") {
-										elementsList = convertXmlToList(elementsList);
-									}
-
-									var length = elementsList.length;
-
-									if (length === 0) {
-										return;
-									}
-									
-
-									if (checkInputPhraseMatchResponse(inputPhrase, data)) {
-
-										elementsList = proccessResponseData(config, elementsList, $field.val());
-
-										loadElements(elementsList, inputPhrase);	
-										
-										showContainer();
-									}
-
-
-									config.get("ajaxCallback")();
-
-								})
-								.fail(function() {})
-								.always(function() {});
-						}
-
-						function convertXmlToList(list) {
-							var simpleList = [];
-
-							$(list).find(config.get("xmlElementName")).each(function() {
-								simpleList.push(this);
-							});
-
-							return simpleList;
-						}
-
-						function createAjaxSettings() {
-
-							var settings = new Object(),
-								ajaxSettings = config.get("ajaxSettings") || {};
-
-							for (set in ajaxSettings) {
-								settings[set] = ajaxSettings[set];
-							}
-
-							return settings;
-						}
-*/
 						function checkInputPhraseMatchResponse(inputPhrase, data) {
 
 							if (config.get("matchResponseProperty") !== false || typeof config.get("matchResponseProperty") === "string") {
